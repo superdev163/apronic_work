@@ -1,0 +1,49 @@
+<form class="form-container" [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+  <div class="form-field">
+    <p>Name</p>
+    <input formControlName="name" />
+    <div
+      class="error-message"
+      *ngIf="
+        eventForm.controls?.['name']?.touched &&
+        eventForm.controls?.['name']?.errors?.['required']
+      ">
+      Name is required.
+    </div>
+  </div>
+  <div class="form-field">
+    <p>From</p>
+    <input type="datetime-local" formControlName="start_at" />
+    <div
+      class="error-message"
+      *ngIf="
+        eventForm.controls?.['start_at']?.touched &&
+        eventForm.controls?.['start_at']?.errors?.['required']
+      ">
+      Start time is required.
+    </div>
+  </div>
+  <div class="form-field">
+    <p>To</p>
+    <input type="datetime-local" formControlName="end_at" />
+    <div
+      class="error-message"
+      *ngIf="
+        eventForm.controls?.['end_at']?.touched &&
+        eventForm.controls?.['end_at']?.errors?.['required']
+      ">
+      End time is required.
+    </div>
+    <div
+      class="error-message"
+      *ngIf="
+        eventForm.controls?.['end_at']?.touched &&
+        eventForm.controls?.['end_at']?.errors?.['incorrect']
+      ">
+      End time cannot be ahead of start time or equal to.
+    </div>
+  </div>
+  <button type="submit" [disabled]="eventForm.invalid">
+    {{ id ? 'Update' : 'Create' }}
+  </button>
+</form>

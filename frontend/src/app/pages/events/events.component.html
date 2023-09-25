@@ -1,0 +1,33 @@
+<div class="container">
+  <app-event-form [id]="editableId"></app-event-form>
+  <div class="event-list">
+    <h1>Events</h1>
+
+    <table *ngIf="events.length > 0; else noEvents">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Name</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Status</th>
+          <th class="text-right">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <app-event-row
+          *ngFor="let event of events; let i = index"
+          (updateEvent)="updateEvent($event)"
+          [className]="event.status"
+          [no]="i"
+          [event]="event"></app-event-row>
+      </tbody>
+    </table>
+
+    <ng-template #noEvents>
+      <div class="no-events">
+        <p>No events</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

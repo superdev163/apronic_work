@@ -1,0 +1,33 @@
+<td>{{ no + 1 }}</td>
+<td>{{ event.name }}</td>
+<td>{{ event.start_at | date: 'YYYY-MM-dd HH:mm' }}</td>
+<td>{{ event.end_at | date: 'YYYY-MM-dd HH:mm' }}</td>
+<td>
+  <span class="status" [ngClass]="event.status">{{ event.status }}</span>
+</td>
+<td>
+  <div class="right">
+    <button
+      *ngIf="event.status === eventStatus.Running"
+      (click)="updateStatus(eventStatus.Stopped)"
+      class="stop-btn">
+      Stop
+    </button>
+    <button
+      *ngIf="event.status === eventStatus.Pending"
+      (click)="editEvent()"
+      class="edit-btn">
+      Edit
+    </button>
+    <button
+      *ngIf="event.status === eventStatus.Pending"
+      (click)="updateStatus(eventStatus.Cancelled)"
+      class="cancel-btn">
+      Cancel
+    </button>
+  </div>
+</td>
+
+<div *ngIf="event.status === eventStatus.Running" class="progress-bar">
+  <div class="progress" [style]="{ width: this.progress + '%' }"></div>
+</div>

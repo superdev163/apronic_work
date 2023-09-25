@@ -1,0 +1,82 @@
+:host {
+  display: table-row;
+  position: relative;
+
+  &.cancelled {
+    opacity: 0.4;
+    background-color: #ccc;
+    pointer-events: none;
+  }
+
+  &.running {
+    background-color: #c7eec9;
+  }
+
+  &.stopped {
+    background-color: #f5ecb4;
+  }
+
+  &.completed {
+    background-color: #b4d8f5;
+  }
+}
+
+td {
+  text-align: center;
+  padding: 6px;
+}
+
+.status {
+  text-transform: uppercase;
+}
+
+button {
+  border-radius: 6px;
+  height: 32px;
+  padding: 4px 8px;
+  border: none;
+  margin: 0 4px;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  &.cancel-btn {
+    border: 1px solid #e36565;
+    color: #e36565;
+    background-color: white;
+  }
+
+  &.stop-btn {
+    background-color: #2c2c2c;
+    color: white;
+  }
+
+  &.edit-btn {
+    background-color: #676df3;
+    color: white;
+  }
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+
+  .progress {
+    height: 100%;
+    width: 60%;
+    background-color: #f62435;
+    border-radius: 5px;
+  }
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+}
