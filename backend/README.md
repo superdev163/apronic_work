@@ -32,6 +32,19 @@
 $ npm install
 ```
 
+## Configuration for database
+1. Please create .env file and copy & paste variables into .env from .env.test
+You should change configuration of database based on your database configuration.
+```dotenv
+PORT=3000
+DATABASE_HOST=localhost
+DATABASE_PORT=3306
+DATABASE_USERNAME=root
+DATABASE_PASSWORD=
+DATABASE_NAME=event
+```
+2. Run Xampp and start the running of MySQL
+
 ## Running the app
 
 ```bash
@@ -40,9 +53,6 @@ $ npm run start
 
 # watch mode
 $ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
 
 ## Test
